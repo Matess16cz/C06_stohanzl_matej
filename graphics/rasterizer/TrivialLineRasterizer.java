@@ -20,6 +20,8 @@ public class TrivialLineRasterizer implements LineRasterizer {
         );
     }
 
+    // Algoritmus: triviální rasterizace úsečky
+    // Rovnice: y = k * x + q
     private void rasterize(int x1, int x2, int y1, int y2, int color) {
         // Vertikální úsečka: nelze použít směrnici (dělení nulou).
         if (x1 == x2) {
@@ -31,7 +33,6 @@ public class TrivialLineRasterizer implements LineRasterizer {
             return;
         }
 
-        // Zajistíme průchod od menšího x k většímu x.
         if (x2 < x1) {
             int tempX = x1;
             x1 = x2;
@@ -43,7 +44,6 @@ public class TrivialLineRasterizer implements LineRasterizer {
 
         float k = (y2 - y1) / (float) (x2 - x1);
 
-        // Pokud je úsečka strmější než 45°, procházíme souřadnici y.
         if (Math.abs(y2 - y1) > Math.abs(x2 - x1)) {
             if (y2 < y1) {
                 int tempX = x1;
